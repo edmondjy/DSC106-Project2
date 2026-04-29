@@ -24,21 +24,13 @@
                 margin: 0 auto;
             }
 
-            /* Headings */
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
+            h1, h2, h3, h4, h5, h6 {
                 line-height: 1.1;
                 font-weight: 600;
                 text-wrap: balance;
             }
 
-            h1,
-            h2 {
+            h1, h2 {
                 border-bottom: 1px solid var(--color-neutral-80);
                 padding-bottom: 0.2em;
             }
@@ -70,10 +62,7 @@
                 font-size: 130%;
             }
 
-            /* Lists */
-
-            ul,
-            ol {
+            ul, ol {
                 padding-inline-start: 2em;
             }
 
@@ -81,13 +70,10 @@
                 &::marker {
                     color: var(--color-neutral-40);
                 }
-
                 + li {
                     margin-top: 0.2em;
                 }
             }
-
-            /* Sectioning elements */
 
             header {
                 padding-block: 1em;
@@ -100,10 +86,6 @@
                 border-radius: 1rem;
                 padding: 0.1rem 2rem;
             }
-
-            /* Figures */
-
-            
 
             figure {
                 margin: 1em 0;
@@ -132,19 +114,33 @@
                     a:not(:hover, :focus, :active) {
                         color: inherit;
                         text-decoration: underline;
-                        text-decoration-color: color-mix(
-                            in lab,
-                            currentColor,
-                            transparent 70%
-                        );
+                        text-decoration-color: color-mix(in lab, currentColor, transparent 70%);
                     }
                 }
 
-            figure img {
-                max-width: 100%;
-                height: auto;
-                object-fit: contain;
+                figure img {
+                    max-width: 100%;
+                    height: auto;
+                    object-fit: contain;
                 }
+            }
+
+            /* Score badge styling */
+            .score {
+                display: inline-block;
+                font-weight: 700;
+                font-size: 0.85em;
+                padding: 0.1em 0.4em;
+                border-radius: 4px;
+                margin-right: 0.3em;
+            }
+            .score-deceptive {
+                background: #fde8e8;
+                color: #c0392b;
+            }
+            .score-earnest {
+                background: #e8f4fd;
+                color: #2e6da4;
             }
         </style>
     </head>
@@ -155,58 +151,100 @@
                 <small>Project 2</small>
                 Persuasive or Deceptive Visualization?
             </h1>
-
-            <p><strong>Liuxuhong, Marvell, Edmond</strong> — <em>Your UCSD Email Address</em></p>
+            <p><strong>Edmond Yang, Liuxuhong Zhao, Marvell Suhali</strong> — <em>DSC 106, UCSD</em></p>
         </header>
 
         <main>
-            <h2>Proposition: Restricting Abortion Clinic Access has Effectivvely Reduced Abortion Rates</h2>
+            <h2>Proposition: Restricting Abortion Clinic Access Has Effectively Reduced Abortion Rates</h2>
 
+            <!-- ── FOR ─────────────────────────────────────────────────────── -->
             <section>
                 <h3>FOR the Proposition</h3>
 
                 <figure>
                     <img src="viz1A.png" alt="Bar chart showing selected states where abortion rates declined after clinic closures" />
-                    <figcaption>More Clinics = More Abortions</figcaption>
+                    <figcaption>Where Clinics Closed, Abortion Rates Fell — Evidence That Restricting Access Works</figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p><strong>Design Decisions and Rationale:</strong></p>
 
                 <ul>
-                    <li>We choose the states where clinic access and abortion rates decreased which make sthe proposition looks stronger.</li>
-                    <li>The horizontal bar chart highlights the large percentage decrease that makes the reduction looks more dramatic ( Especially Missouri )</li>
-                    <li>The title frames the chart as evidence that restricting access works so that the visualization does not prove any causation.</li>
+                    <li>
+                        <span class="score score-deceptive">−2  Cherry-picking</span>
+                        We selected only states where both clinic access <em>and</em> abortion rates decreased simultaneously, hiding the majority of states where clinic closures did not correspond to rate reductions. This filtering creates a false impression of a consistent, nationwide pattern.
+                    </li>
+                    <li>
+                        <span class="score score-deceptive">−1.5  Dramatic framing</span>
+                        The horizontal bar chart emphasizes Missouri's extreme −98% rate change, which dominates the visual. This anchors the viewer on an outlier caused by a near-total abortion ban — a policy effect far beyond mere clinic restriction — making the relationship appear more causal than the data supports.
+                    </li>
+                    <li>
+                        <span class="score score-deceptive">−1  Misleading title</span>
+                        The title "Evidence That Restricting Access Works" frames the chart as proof of causation. The visualization shows only correlation within a cherry-picked subset, and no causal mechanism is established or disclosed.
+                    </li>
                 </ul>
             </section>
 
+            <!-- ── AGAINST ─────────────────────────────────────────────────── -->
             <section>
-                <h3>AGAINST the Proposition: Restricting Abortion Clinic Access has NOT Effectively Reduced Abortion Rates</h3>
+                <h3>AGAINST the Proposition: Restricting Abortion Clinic Access Has NOT Effectively Reduced Abortion Rates</h3>
 
                 <figure>
-                    <img src="IMAGE_FILENAME" alt="" />
-                    <figcaption>Closing Clinics Does Not Reliably Reduce Abortion Rates Across All 50 States</figcaption>
+                    <img src="viz2A.png" alt="Scatter plot showing near-zero correlation between clinic change and abortion rate change across all 50 states" />
+                    <figcaption>Closing Clinics Does Not Reliably Reduce Abortion Rates — Across All 50 States, the Correlation Is Near Zero</figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p><strong>Design Decisions and Rationale:</strong></p>
 
                 <ul>
-                    <li>RATIONALE_1</li>
-                    <li>RATIONALE_2</li>
-                    <li>RATIONALE_3</li>
+                    <li>
+                        <span class="score score-earnest">+2  Full data transparency</span>
+                        All 49 states are plotted (Missouri excluded as a documented policy outlier — it enacted a near-total ban, not merely clinic restrictions). The correlation coefficient is displayed explicitly in the title. Showing all states rather than a selection gives an honest picture of the aggregate relationship.
+                    </li>
+                    <li>
+                        <span class="score score-earnest">+1.5  Quadrant color coding</span>
+                        Points are color-coded by which quadrant they fall in: red dots represent states where clinics decreased but abortion rates actually <em>rose</em> — directly contradicting the proposition. This encoding makes the mixed, inconsistent pattern immediately visible without hiding any data.
+                    </li>
+                    <li>
+                        <span class="score score-earnest">+1.5  Transparent outlier disclosure</span>
+                        Missouri's exclusion is noted in the annotation with a specific justification (near-total ban; −98% rate change). Unlike Page 1 which excluded DC silently, this exclusion is disclosed and reasoned, allowing readers to evaluate the decision themselves.
+                    </li>
+                </ul>
+
+                <figure>
+                    <img src="viz2B.png" alt="Grouped bar chart showing the gap between residence-based and occurrence-based abortion rates in high-travel states" />
+                    <figcaption>Restricting Clinics Doesn't Eliminate Abortions — It Just Moves Them: States With Fewest Clinics Have the Highest Out-of-State Travel Rates</figcaption>
+                </figure>
+
+                <p><strong>Design Decisions and Rationale:</strong></p>
+
+                <ul>
+                    <li>
+                        <span class="score score-earnest">+2  Dual-rate comparison</span>
+                        By showing both the residence-based abortion rate (where women <em>live</em>) and the occurrence-based rate (where abortions <em>happen</em>) side by side, the visualization makes the displacement effect concrete and verifiable. The gap between the two bars directly shows that women in restrictive states are not forgoing abortions — they are traveling to obtain them elsewhere.
+                    </li>
+                    <li>
+                        <span class="score score-earnest">+1.5  Contextual axis labels</span>
+                        Out-of-state travel percentages are embedded directly into the x-axis state labels (e.g., "Mississippi (57% travel out)"). This grounds each bar in an additional data dimension without requiring a separate chart, giving readers full context at a glance.
+                    </li>
+                    <li>
+                        <span class="score score-earnest">+1  Threshold-based filtering disclosed</span>
+                        Only states where ≥30% of residents traveled out of state are shown, and this threshold is stated in the chart annotation. The filter is earnest because it highlights the states where displacement is most pronounced — it strengthens the argument with real data rather than hiding contrary cases.
+                    </li>
                 </ul>
             </section>
 
+            <!-- ── REFLECTION ──────────────────────────────────────────────── -->
             <section>
                 <h2>Final Reflection</h2>
 
-                <p>One part of the project that was straightforward was visualizing the data to tell a story about Abortion Rates in the United States. Drawing upon the data, we pulled rates of abortion over time as more and more clinics were built. Something that surprised us the most was that adjusting a color gradient on a dashboard could drastically alter the emotional tone of the visualization. It became apparent that the raw data alone does not dictate the narrative. The visual framing holds immense power to shift the viewer's perception. 
+                <p>One part of the project that was straightforward was visualizing the data to tell a story about Abortion Rates in the United States. Drawing upon the data, we pulled rates of abortion over time as more and more clinics were built. Something that surprised us the most was that adjusting a color gradient on a dashboard could drastically alter the emotional tone of the visualization. It became apparent that the raw data alone does not dictate the narrative. The visual framing holds immense power to shift the viewer's perception.</p>
 
-This realization shapes how we view ethical analysis and visualization. It is not about ensuring that the data is mathematically accurate or bug-free; it requires honesty behind the visuals, to not twist the audience’s views or biases. An ethical visualization has to provide enough context, acknowledge the nuances, and the structural factors impacting abortion seekers and providers across different states. This guides the viewer towards a comprehensive understanding rather than a reductive conclusion. 
+                <p>This realization shapes how we viewed ethical analysis and visualization. It is not about ensuring that the data is mathematically accurate or bug-free; it requires honesty behind the visuals, to not twist the audience's views or biases. An ethical visualization has to provide enough context, acknowledge the nuances, and the structural factors impacting abortion seekers and providers across different states. This guides the viewer towards a comprehensive understanding rather than a reductive conclusion.</p>
 
-Drawing the boundary between an “acceptable” persuasive choice and a “misleading” one comes down to transparency and the preservation of data. Acceptable persuasion uses sound design techniques to highlight a statistically significant finding, such as drawing attention to a clear disparity in accessibility to certain providers. Misleading choices are intentionally made to obscure the truth. Cherry picking specific timeframes or certain data would lead to manipulation, a choice that prioritizes an unethical agenda over integrity. 
-</p>
+                <p>Drawing the boundary between an "acceptable" persuasive choice and a "misleading" one comes down to transparency and the preservation of data. Acceptable persuasion uses sound design techniques to highlight a statistically significant finding, such as drawing attention to a clear disparity in accessibility to certain providers. Misleading choices are intentionally made to obscure the truth. Cherry picking specific timeframes or certain data would lead to manipulation, a choice that prioritizes an unethical agenda over integrity.</p>
             </section>
         </main>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    </body>
 </html>
